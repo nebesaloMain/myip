@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PG_HOST=db
+      - PG_PORT=5432
+      - PG_DBNAME=myip
+      - PG_USER=postgres
+      - PG_PASSWORD=yourpgpw
+      - JWT_KEY=yourjwtkey
+      - EMAIL_PASSWORD=youremailpw
+      - EMAIL=segalpromkaone
+    depends_on:
+      - db
+    volumes:
+      - .:/app  
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: yourpgpw
+      POSTGRES_DB: myip
+    ports:
+      - "2588:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./tables.sql:/docker-entrypoint-initdb.d/tables.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d myip"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:

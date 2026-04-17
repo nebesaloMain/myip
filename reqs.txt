@@ -1,0 +1,6 @@
+pyjwt
+asyncpg
+dotenv
+pydantic
+uvicorn
+fastapi
