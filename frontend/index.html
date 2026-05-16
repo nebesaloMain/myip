@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndPro - Система Заявлений</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        a {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 18px;
+            color: white;
+            background-color: #0066cc;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid #0066cc;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        a:hover {
+            background-color: white;
+            color: #0066cc;
+        }
+        .secondary {
+            background-color: #f0f0f0;
+            color: #0066cc;
+            border: 2px solid #0066cc;
+        }
+        .secondary:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🏢 IndPro</h1>
+<p style="font-size: 18px; color: #666; margin-bottom: 40px;">Система управления заявлениями</p>
+
+<div class="buttons">
+    <a href="./register/index.html">Регистрация</a>
+    <a href="./login/index.html" class="secondary">Войти</a>
+    <a href="./bid/index.html" class="secondary">Подать заявление</a>
+    <a href="./admin/index.html" class="secondary">Админ Панель</a>
+</div>
+
+<script>
+    // Проверка токена и редирект, если нужно
+    const token = localStorage.getItem('token');
+    // Если токен есть, можно показать разные опции
+</script>
+
+</body>
+</html>

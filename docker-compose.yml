@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build: .
@@ -10,10 +8,10 @@ services:
       - PG_PORT=5432
       - PG_DBNAME=myip
       - PG_USER=postgres
-      - PG_PASSWORD=yourpgpw
+      - PG_PASSWORD=yourpassword
       - JWT_KEY=yourjwtkey
-      - EMAIL_PASSWORD=youremailpw
-      - EMAIL=segalpromkaone
+      - EMAIL_PASSWORD=yourgmailpassword
+      - EMAIL=yourgmail
     depends_on:
       - db
     volumes:
@@ -23,7 +21,7 @@ services:
     image: postgres:17
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: yourpgpw
+      POSTGRES_PASSWORD: yourpassword
       POSTGRES_DB: myip
     ports:
       - "2588:5432"

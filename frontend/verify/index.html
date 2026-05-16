@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение Email - IndPro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            height: 45px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            box-sizing: border-box;
+            border: 2px solid #707070;
+            border-radius: 8px;
+        }
+        button {
+            width: 100%;
+            height: 45px;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            border: 2px solid #707070;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e0e0e0;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Подтверждение Email</h1>
+<p>Введите код подтверждения, отправленный на вашу почту</p>
+
+<form id="verifyForm">
+    <input type="text" id="code" placeholder="Введите код" required>
+    <button type="submit">Подтвердить</button>
+    <div id="message"></div>
+</form>
+
+<a href="../login/index.html">Перейти к входу</a>
+
+<script>
+    const apiUrl = 'http://localhost:8000';
+    
+    document.getElementById('verifyForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const code = document.getElementById('code').value;
+        const messageDiv = document.getElementById('message');
+        
+        try {
+            const response = await fetch(`${apiUrl}/api/users/verify/${code}`, {
+                method: 'GET'
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok && data.code === 200) {
+                messageDiv.innerHTML = '<p class="success">Email подтвержден! Перенаправление...</p>';
+                setTimeout(() => {
+                    window.location.href = '../login/index.html';
+                }, 2000);
+            } else {
+                messageDiv.innerHTML = `<p class="error">Ошибка: ${data.detail || 'Неизвестная ошибка'}</p>`;
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            messageDiv.innerHTML = '<p class="error">Ошибка сети</p>';
+        }
+    });
+</script>
+
+</body>
+</html>

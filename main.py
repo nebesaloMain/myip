@@ -30,6 +30,7 @@ app.add_middleware(CORSMiddleware,
                         "https://nebesalo.ru:443",
                         "https://nebesalo.ru:80",
                         "http://localhost",
+                        "http://localhost:5500",
                         "http://localhost:5500"
                     ], 
                     allow_credentials=True,
