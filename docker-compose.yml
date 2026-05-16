@@ -24,7 +24,7 @@ services:
       POSTGRES_PASSWORD: yourpassword
       POSTGRES_DB: myip
     ports:
-      - "2588:5432"
+      - "2468:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./tables.sql:/docker-entrypoint-initdb.d/tables.sql
