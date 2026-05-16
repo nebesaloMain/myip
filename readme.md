@@ -56,10 +56,10 @@ docker compose up --build
 - `PG_PORT=5432`
 - `PG_DBNAME=myip`
 - `PG_USER=postgres`
-- `PG_PASSWORD=mysecretpassword`
+- `PG_PASSWORD=yourpassword`
 - `JWT_KEY` и `EMAIL`/`EMAIL_PASSWORD`
 
-PostgreSQL будет слушать на порту `2588` хоста, но приложение подключается к контейнеру `db` по имени сервиса.
+PostgreSQL будет слушать на порту `2468` хоста, но приложение подключается к контейнеру `db` по имени сервиса.
 
 ## API
 
